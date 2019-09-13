@@ -31,7 +31,7 @@ game-board.innerHTML = `
     <section class="win-game-list">
       <h2>game wins</h2>
       <article>
-        <p class="aside-text">round 1</p>
+        <p class="aside-text">round <span class="round-number">?</span></p>
         <p class="aside-text"><span class="game-time">452.3</span> seconds</p>
       </article>
     </section>
