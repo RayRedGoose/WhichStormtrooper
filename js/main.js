@@ -85,7 +85,7 @@ function addErrorStyles() {
 nameInput.addEventListener('input', removeErrorMessage);
 
 function removeErrorMessage() {
-  if (nameInput.value.length < 1 && document.querySelectorAll('.error').length != 0) {
+  if (nameInput.value.length < 2 && document.querySelectorAll('.error').length != 0) {
     document.querySelector('.error').remove();
     nameInput.classList.remove('error-input');
   }
@@ -150,10 +150,12 @@ function flipCard(event) {
     event.target.classList.add('front');
     event.target.classList.remove('back');
     event.target.style.backgroundImage = "url('./image/stt-5.jpg')";
+    setTimeout(backCard, 3000, event.target);
   }
-  // if (event.target.classList.contains('front') ) {
-  //   event.target.classList.add('back');
-  //   event.target.classList.remove('front');
-  //   event.target.style.backgroundImage = "url('./image/logo.jpg')";
-  // }
+}
+
+function backCard(target) {
+  target.classList.add('back');
+  target.classList.remove('front');
+  target.style.backgroundImage = "url('./image/logo.jpg')";
 }
