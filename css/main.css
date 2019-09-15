@@ -90,10 +90,16 @@ button {
   background: rgba(255, 255, 255, .9) url('../image/bg-image.jpg');
   background-position: center 0;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 91vh;
 }
 
 .button--play-game {
+  width: 100%;
+}
+
+.button--white {
+  background-color: #fff;
+  color: #000;
   width: 100%;
 }
 
@@ -184,6 +190,7 @@ button {
 
 .win-game-list {
   justify-content: flex-start;
+  min-height: 47%;
 }
 
 .win-game-list article {
@@ -195,7 +202,7 @@ button {
   font-size: 64px;
 }
 
-.game-place {
+.cards-place {
   grid-area: board;
   display: grid;
   grid-gap: 40px;
@@ -204,10 +211,11 @@ button {
   grid-template-areas: 'fst snd trd frth'
                       'sxth svth eth nth'
                       'elth twth ttth ftth';
+  height: 100vh;
   padding: 5% 8%;
 }
 
-.game-place div {
+.cards-place div {
   background-color: #fff;
   background-image: url('../image/logo.jpg');
   background-position: center;
@@ -215,6 +223,12 @@ button {
   cursor: pointer;
   height: 175px;
   width: 120px;
+}
+
+.cards-place div:hover {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+     -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+          box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 }
 
 .card-1 {
@@ -236,6 +250,7 @@ button {
   grid-area: sxth;
   transform: translateY(-10px) rotateZ(-25deg);
 }
+
 
 .card-5 {
   grid-area: svth;
