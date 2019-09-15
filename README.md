@@ -9,15 +9,15 @@ Player takes turn flipping over two cards at a time. If they match, that player 
 ## Style guide
 
 **First page**
-![/screenshots/scr_sh-1.png](First page)
+![First page](/screenshots/scr_sh-1.png)
 
 **Page with game rules**
-![/screenshots/scr_sh-2.png](Rules page)
+![Rules page](/screenshots/scr_sh-2.png)
 
 **Game board**
-![/screenshots/scr_sh-3.png](First page)
-![/screenshots/scr_sh-4.png](First page)
-![/screenshots/scr_sh-5.png](First page)
+![Before game](/screenshots/scr_sh-3.png)
+![After start](/screenshots/scr_sh-4.png)
+![In process](/screenshots/scr_sh-5.png)
 
 **Winner banner**
-![/screenshots/scr_sh-6.png](First page)
+![Winner banner](/screenshots/scr_sh-6.png)
