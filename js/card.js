@@ -6,15 +6,8 @@ class Card {
     this.matched = false;
   }
 
-  getId(id) {
-    this.id = id;
-  }
-
-  setImage(deck) {
-    var random = Math.floor(Math.random() * deck.allImages.length);
-    this.image = deck.allImages[random];
-    this.matchInfo = this.image;
-    deck.allImages.splice(random, 1);
+  getId(counter) {
+    this.id = counter;
   }
 
   match() {

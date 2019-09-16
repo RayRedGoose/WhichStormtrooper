@@ -83,6 +83,32 @@ button {
   margin: 20px;
 }
 
+.top-players-list ul {
+  position: absolute;
+  top: 70px;
+  width: 500%;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.top-players-list ul li {
+  list-style: none;
+  margin: 0 20px;
+  padding: 20px;
+  border-bottom: 2px solid #fff;
+}
+
+.top-players-list ul li:last-child {
+  border-bottom: none;
+}
+
+.top-players-list ul li p {
+  margin: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
 /* CONTENT STYLES */
 
 .content {

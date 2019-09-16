@@ -11,6 +11,8 @@ class Deck {
   }
 
   addCards(card) {
+    card.getId(this.allCards.length + 1);
+    this.shuffle(card);
     this.allCards.push(card);
   }
 
@@ -21,9 +23,8 @@ class Deck {
     this.player.time = {minutes: minutes, seconds: seconds, allTime: allTime};
   }
 
-  shuffle(index) {
+  shuffle(card) {
     var random = Math.floor(Math.random() * this.allImages.length);
-    var card = this.allCards[index - 1];
     card.image = this.allImages[random];
     card.matchInfo = card.image;
     this.allImages.splice(random, 1);
