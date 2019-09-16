@@ -101,6 +101,7 @@ button {
   background-color: #fff;
   color: #000;
   width: 100%;
+  margin-top: 10px;
 }
 
 /* FIRST PAGE STYLES */
@@ -190,7 +191,6 @@ button {
 
 .win-game-list {
   justify-content: flex-start;
-  min-height: 47%;
 }
 
 .win-game-list article {
