@@ -312,6 +312,7 @@ function goToPairGameBoard() {
   changeStylesForBoard();
   createCards();
   createSecondPlayerBoard();
+  addTrophy();
 }
 
 function changeStylesForBoard() {
@@ -628,6 +629,37 @@ function changeHighlight() {
 function changeOrderPlayers() {
   if (deck.playerTwo.hasOwnProperty('name')) {
     changeHighlight();
+  }
+}
+
+// *** ADD TROPHY TO TOP 5 PLAYERS***
+
+function addTrophy() {
+  var winnerNames = [];
+  games.forEach(function(elem) {
+    winnerNames.push(elem.name);
+  });
+  addTrophyToFirstPlayer(winnerNames);
+  addTrophyToSecondPlayer(winnerNames);
+}
+
+function addTrophyToFirstPlayer(winnerNames) {
+  var blockOne = document.querySelector('.player-information');
+  if (winnerNames.includes(deck.player.name)) {
+    var icon = document.createElement('div');
+    icon.classList.add('trophy');
+    var parent = blockOne.querySelector('header');
+    parent.appendChild(icon);
+  }
+}
+
+function addTrophyToSecondPlayer(winnerNames) {
+  var blockTwo = document.querySelector('.second-player');
+  if (winnerNames.includes(deck.playerTwo.name)) {
+    var icon = document.createElement('div');
+    icon.classList.add('trophy');
+    var parent = blockTwo.querySelector('header');
+    parent.appendChild(icon);
   }
 }
 

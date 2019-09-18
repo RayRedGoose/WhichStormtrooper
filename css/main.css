@@ -298,13 +298,26 @@ button:hover {
 }
 
 .game-board aside header {
+  align-items: center;
   border-bottom: 1px solid #fff;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 20px;
 }
 
 .game-board aside header h2 {
   padding: 5px;
 }
+
+.game-board aside header .trophy {
+  background-image: url('../image/trophy.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  height: 40px;
+  width: 40px;
+}
+
 
 .game-board aside section {
   padding: 20px 0;
@@ -314,7 +327,7 @@ button:hover {
 
 .win-game-list {
   justify-content: flex-start;
-  min-height: 55%;
+  min-height: 50%;
 }
 
 .win-game-list article {
