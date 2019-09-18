@@ -9,6 +9,8 @@
 
 body {
   background-color: #F5F7F6;
+  height: 100vh;
+  overflow: hidden;
 }
 
 section {
@@ -47,8 +49,15 @@ input {
 button {
   background-color: #000;
   color: #fff;
+  cursor: pointer;
   font-weight: 600;
   margin-top: 80px;
+}
+
+button:hover {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+          box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 /* HEADER STYLES */
@@ -64,7 +73,9 @@ button {
      -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);
           box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding-right: 20px;
+  width: 100%;
 }
 
 .header nav {
@@ -73,30 +84,35 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 50px;
-  height: 73px;
-  position: absolute;
-  left: 0;
+  cursor: pointer;
   width: 73px;
 }
 
+.header nav:hover {
+  background-size: 55px;
+}
+
 .header h1 {
-  margin: 20px;
+  position: relative;
+  margin: auto;
+  padding: 20px;
 }
 
 .top-players-list ul {
-  position: absolute;
-  top: 70px;
-  width: 500%;
-  background-color: #000;
   color: #fff;
+  cursor: default;
+  background-color: #000;
+  position: absolute;
   text-align: center;
+  top: 70px;
+  width: 30%;
 }
 
 .top-players-list ul li {
+  border-bottom: 2px solid #fff;
   list-style: none;
   margin: 0 20px;
   padding: 20px;
-  border-bottom: 2px solid #fff;
 }
 
 .top-players-list ul li:last-child {
@@ -104,9 +120,66 @@ button {
 }
 
 .top-players-list ul li p {
+  font-size: 16px;
   margin: 10px;
   text-transform: uppercase;
-  font-size: 16px;
+}
+
+/* SWITCH STYLES */
+
+.switch {
+  align-self: center;
+  background-color: #000;
+  border-radius: 50px;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding: 10px 0 10px 40px;
+  position: relative;
+  margin: 0;
+  width: fit-content;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch label {
+  cursor: pointer;
+  margin-right: 40px;
+  transition: color 200ms ease-out;
+}
+
+.switch label:hover {
+  color: red;
+}
+
+.switch__indicator {
+  position: absolute;
+  top: -20%;
+  left: 10px;
+  height: 3.5rem;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), background 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
+  transform: translate3d(1rem, 0, 0);
+  width: 3.5rem;
+}
+
+.switch input#one:checked ~ .switch__indicator {
+  background-image: url('../image/one-user.svg');
+  transform: translate3d(1.2rem, 0, 0);
+}
+.switch input#two:checked ~ .switch__indicator {
+  background-image: url('../image/two-users.svg');
+  transform: translate3d(5.5rem, 0, 0);
 }
 
 /* CONTENT STYLES */
@@ -116,7 +189,7 @@ button {
   background: rgba(255, 255, 255, .9) url('../image/bg-image.jpg');
   background-position: center 0;
   background-repeat: no-repeat;
-  height: 91vh;
+  height: 100vh;
 }
 
 .button--play-game {
@@ -126,8 +199,15 @@ button {
 .button--white {
   background-color: #fff;
   color: #000;
+  cursor: pointer;
   width: 100%;
   margin-top: 10px;
+}
+
+.button--white:hover {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+  box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
 }
 
 /* FIRST PAGE STYLES */
@@ -183,8 +263,7 @@ button {
   width: 100%;
 }
 
-.button--new-game,
-.button--rematch {
+.winner-page {
   width: 45%;
 }
 
@@ -192,24 +271,37 @@ button {
 .game-board {
   display: grid;
   grid-template-columns: 1fr 3.5fr;
-  grid-template-areas: "info board";
+  grid-template-rows: 9fr 1fr;
+  grid-template-areas: "first board";
 }
 
 .player-information {
   background-color: #000;
   color: #fff;
-  grid-area: info;
+  grid-area: first;
   margin: 20px;
   padding: 20px;
   text-align: center;
 }
 
-.player-information header {
+.second-player {
+  background-color: #000;
+  color: #fff;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.game-board aside header {
   border-bottom: 1px solid #fff;
   padding-bottom: 20px;
 }
 
-.player-information section {
+.game-board aside header h2 {
+  padding: 5px;
+}
+
+.game-board aside section {
   padding: 20px 0;
   width: 100%;
   border-top: 2px solid #fff;
@@ -228,6 +320,15 @@ button {
   font-size: 64px;
 }
 
+.highlighted {
+  color: #fff;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+  box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+
+}
+
 .cards-place {
   grid-area: board;
   display: grid;
@@ -238,7 +339,7 @@ button {
                       'sxth svth eth nth'
                       'elth twth ttth ftth';
   height: 100vh;
-  padding: 5% 8%;
+  padding: 5% 5%;
 }
 
 .cards-place div {

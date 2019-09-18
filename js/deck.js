@@ -8,6 +8,8 @@ class Deck {
     this.selectedCards = [];
     this.matches = 0;
     this.player = {};
+    this.playerTwo = {};
+    this.numbersOfPlayers = 1;
   }
 
   addCards(card) {
@@ -16,11 +18,11 @@ class Deck {
     this.allCards.push(card);
   }
 
-  getGameTime() {
+  getGameTime(winner) {
     var allTime = this.endTime - this.startTime;
     var minutes = parseInt((allTime / 60000), 10);
     var seconds = parseInt(((allTime - (minutes * 60000)) / 1000), 10);
-    this.player.time = {minutes: minutes, seconds: seconds, allTime: allTime};
+    winner.time = {minutes: minutes, seconds: seconds, allTime: allTime};
   }
 
   shuffle(card) {
@@ -30,8 +32,13 @@ class Deck {
     this.allImages.splice(random, 1);
   }
 
-  checkSelectedCards(card) {
+  addSelectedCards(card) {
     this.selectedCards.push(card);
+  }
+
+  checkSelectedCards() {
+    var result = this.selectedCards[0].image === this.selectedCards[1].image;
+    return result;
   }
 
   moveToMatched(card1, card2) {
@@ -54,5 +61,18 @@ class Deck {
     this.matchedCards = [];
     this.selectedCards = [];
     this.matches = 0;
+    this.player.matchCount = 0;
+    this.playerTwo.matchCount = 0;
+  }
+
+  getOrder() {
+    var order = Boolean(Math.floor(Math.random() * 2));
+    this.player.order = order;
+    this.playerTwo.order = !order;
+  }
+
+  changeOrder() {
+    this.player.order = !this.player.order;
+    this.playerTwo.order = !this.playerTwo.order;
   }
 }
