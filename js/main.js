@@ -253,7 +253,7 @@ function makeMatchedCardsSPlayer(card1, card2) {
 function makePlayerWinner(winner) {
   if (deck.matches === 5) {
     makeChangesInDeck(winner);
-    showWinnerPage();
+    showWinnerPage(winner);
     changeRematchButton();
   }
 }
@@ -261,6 +261,7 @@ function makePlayerWinner(winner) {
 function makeChangesInDeck(winner) {
   deck.endTime = Date.now();
   deck.getGameTime(deck.player);
+  deck.getGameTime(deck.playerTwo);
   localStorage.setItem(winner.round, JSON.stringify(winner));
   deck.startNextRound();
   deck.renewDeck();
@@ -357,7 +358,6 @@ function showWinner() {
     var winner = deck.playerTwo;
   }
   makePlayerWinner(winner);
-  deck.getGameTime(deck.playerTwo);
 }
 
 function rematchGameForBoth() {
@@ -459,15 +459,15 @@ function cutPlayerGamesArray(array) {
 }
 
 // Function for creating winner page
-function showWinnerPage() {
+function showWinnerPage(winner) {
   removeGamePage();
-  createWinnerPage();
+  createWinnerPage(winner);
 }
 
-function createWinnerPage() {
+function createWinnerPage(winner) {
   pushFromLocalStorage();
   createHeader();
-  createtWinnerPageBody();
+  createWinnerPageBody(winner);
 }
 
 function createHeader() {
@@ -477,10 +477,10 @@ function createHeader() {
   body.appendChild(header);
 }
 
-function createtWinnerPageBody() {
+function createWinnerPageBody(winner) {
   var winnerPage = document.createElement('main');
   winnerPage.classList.add('content');
-  winnerPage.innerHTML = getWinnerPageStructure();
+  winnerPage.innerHTML = getWinnerPageStructure(winner);
   body.appendChild(winnerPage);
 }
 
@@ -681,11 +681,11 @@ function getPlayerInformetion() {
   return asideBlock;
 }
 
-function getWinnerPageStructure() {
+function getWinnerPageStructure(winner) {
   var winnerPageStructure = `
     <section class="winner-information">
-      <h1>congratulations, <span class="h1 player-name">${deck.player.name}</span> wins!</h1>
-      <article class="time-information">It took you <span class="game-time">${deck.player.time.minutes}</span> minutes <span class="game-time">${deck.player.time.seconds}</span> seconds.</article>
+      <h1>congratulations, <span class="h1 player-name">${winner.name}</span> wins!</h1>
+      <article class="time-information">It took you <span class="game-time">${winner.time.minutes}</span> minutes <span class="game-time">${winner.time.seconds}</span> seconds.</article>
       <article>Click below to keep playing.</article>
       <footer>
         <button class="button winner-page button--new-game" type="button" name="button">new game</button>
