@@ -6,6 +6,11 @@
 
 Player takes turn flipping over two cards at a time. If they match, that player “scores”. If the two cards don’t match, they must be flipped back over. The goal is the get the all of matches.
 
+## Author 
+
+Code and disign: Raisa Primerova
+
+
 ## Style guide
 
 **First page for one player**
