@@ -51,6 +51,7 @@ function chooseTwoPlayer() {
   parent.insertBefore(input, button);
   deck.numbersOfPlayers = 2;
   document.querySelector('.main-page').classList.replace('main-page', 'main-page-double');
+  document.documentElement.style.setProperty('--primary-color', 'red');
 }
 
 function chooseOnePlayer() {
@@ -146,8 +147,9 @@ function createPlayer() {
     var player = new Player(playerName);
     deck.player = player;
     goToWelcomePageBody(playerName);
+  } else {
+    showError(playerName);
   }
-  showError();
 }
 
 // Function for launching page with game rules
@@ -286,8 +288,6 @@ function goToRules() {
   var playerTwoName = document.querySelector('#player-input-2').value;
   if (playerTwoName != "" && playerTwoName.length < 33 && playerOneName != "" && playerOneName.length < 33) {
     launchRulesPageForDouble(playerTwoName);
-  } else {
-    showError();
   }
 }
 
@@ -298,8 +298,13 @@ function launchRulesPageForDouble(playerTwoName) {
 }
 
 function createSecondPlayer(playerName) {
-  var player = new Player(playerName);
-  deck.playerTwo = player;
+  if (playerName != "" && playerName.length < 33) {
+    var player = new Player(playerName);
+    deck.playerTwo = player;
+  } else {
+    showError(playerName);
+  }
+
 }
 
 function changeWelcomePageStructure() {
@@ -522,13 +527,14 @@ function clearMatchedCard(card1, card2) {
 
 // *** ERROR FUNCTIONS ***
 
-function showError() {
+function showError(playerName) {
   var errorMessages = ["Please enter a name.", "Name can't be longer than 32 symbols"];
-  if (nameInput.value === "") {
+  if (playerName === "") {
     createErrorMessage(errorMessages[0]);
     addErrorStyles();
+    console.log(playerName);
   }
-  if (nameInput.value.length > 32) {
+  if (playerName.length > 32) {
     createErrorMessage(errorMessages[1]);
     addErrorStyles();
   }
