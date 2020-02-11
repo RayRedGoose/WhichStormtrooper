@@ -3,14 +3,11 @@ var nameInput = document.querySelector('#player-input');
 var games = [];
 var deck = new Deck();
 
-window.addEventListener('load', loadInformationAboutGames);
 body.addEventListener('click', chooseBodyClickAction);
 nameInput.addEventListener('input', removeErrorMessage);
 
 // *** LOADING FUNCTION ***
-function loadInformationAboutGames() {
-  pushFromLocalStorage();
-}
+pushFromLocalStorage();
 
 // *** CLICK FUNCTIONS ***
 
