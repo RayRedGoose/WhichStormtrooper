@@ -576,6 +576,18 @@ function removeErrorMessage() {
 
 function pushFromLocalStorage() {
   games = [];
+  if (!localStorage.length) {
+    games = [{
+      round: 1,
+      name: "Ray",
+      time: { minutes: 0, seconds: 20, allTime: 20990},
+      minutes: 0,
+      seconds: 20,
+      allTime: 20990,
+      matchCount: 5,
+      order: 0
+    }];
+  }
   for (var i = 1; i <= localStorage.length; i++) {
     var localStorageItem = JSON.parse(localStorage.getItem(i));
     games.push(localStorageItem);
